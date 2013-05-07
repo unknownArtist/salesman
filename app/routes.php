@@ -20,4 +20,4 @@ Route::resource('register', 'RegisterController');
 Route::resource('items', 'AdminItemsController');
 /*--------------Admin routes-------------------*/
 Route::resource('admin','AdminConfigController@getIndex');
-Route::resource('admin/categories','AdminConfigController@Categories');
+// Route::resource('admin/categories','AdminConfigController@Categories');
