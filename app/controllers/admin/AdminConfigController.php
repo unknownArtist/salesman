@@ -13,4 +13,8 @@ class AdminConfigController extends BaseController
 	{
 		echo "hello";
 	}
+	public function getusers()
+	{	
+	   echo "All Students";
+	}
 }

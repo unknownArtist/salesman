@@ -22,6 +22,7 @@ class AdminItemsController extends BaseController {
     public function index()
     {
         $items = $this->item->all();
+       
 
         return View::make('admin.items.index', compact('items'));
     }
