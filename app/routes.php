@@ -15,6 +15,7 @@ Route::get('/', function(){
 	echo "Hello workd";
 });
 
+
 Route::resource('register', 'RegisterController');
 
 Route::resource('items', 'AdminItemsController');

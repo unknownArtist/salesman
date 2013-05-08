@@ -4,6 +4,14 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
+     protected $guarded = array();
+     public static $rules = array(
+		'email' => 'required',
+		// 'item_description' => 'required',
+		'password' => 'required'
+		
+	);
+
 
 	/**
 	 * The database table used by the model.

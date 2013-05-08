@@ -31,7 +31,7 @@ class UsersController extends \BaseController {
 	{
 		return View::make('users.create');
 	}
-
+ 
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -39,22 +39,35 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		 $input = Input::all();
-		
-        $validation = Validator::make($input, Item::$rules);
+		try
+{
+		 // Create the user
+    $Users = Sentry::getUserProvider()->create(array(
+        'email'    => Input::get('email'),
+        'password' => Input::get('password')
 
-        if ($validation->passes())
-        {
-            $this->users->create($input);
+    ));
 
-            return Redirect::route('users.index');
-        }
+    
+  
+}
+catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
+{
+    echo 'Login field is required.';
+}
+catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
+{
+    echo 'Password field is required.';
+}
+catch (Cartalyst\Sentry\Users\UserExistsException $e)
+{
+    echo 'User with this login already exists.';
+}
 
-        return Redirect::route('users.create')
-            ->withInput()
-            ->withErrors($validation)
-            ->with('flash', 'There were validation errors.');
+
+
 	}
+
 
 	/**
 	 * Display the specified resource.
@@ -64,9 +77,7 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		 $users = $this->user->findOrFail($id);
-
-        return View::make('users.show', compact('users'));
+		 
 	}
 
 	/**
@@ -77,14 +88,7 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		 $users = $this->user->find($id);
-
-        if (is_null($users))
-        {
-            return Redirect::route('users.index');
-        }
-
-        return View::make('users.edit', compact('users'));
+		 
 	}
 
 	/**
@@ -95,21 +99,7 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$input = array_except(Input::all(), '_method');
-        $validation = Validator::make($input, Item::$rules);
-
-        if ($validation->passes())
-        {
-            $users = $this->user->find($id);
-            $users->update($input);
-
-            return Redirect::route('users.show', $id);
-        }
-
-        return Redirect::route('users.edit', $id)
-            ->withInput()
-            ->withErrors($validation)
-            ->with('flash', 'There were validation errors.');
+		
 	}
 
 	/**
@@ -120,9 +110,7 @@ class UsersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->users->find($id)->delete();
-
-        return Redirect::route('users.index');
+		
 	}
 
 }
