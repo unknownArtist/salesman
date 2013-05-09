@@ -19,7 +19,7 @@ class UsersController extends \BaseController {
 		 $users = $this->user->all();
        
 
-        return View::make('users.index', compact('User'));
+        return View::make('users.index', compact('users'));
 	}
 
 	/**
@@ -65,9 +65,7 @@ catch (Cartalyst\Sentry\Users\UserExistsException $e)
 }
 
 
-
 	}
-
 
 	/**
 	 * Display the specified resource.
@@ -80,6 +78,7 @@ catch (Cartalyst\Sentry\Users\UserExistsException $e)
 		 
 	}
 
+
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -88,7 +87,14 @@ catch (Cartalyst\Sentry\Users\UserExistsException $e)
 	 */
 	public function edit($id)
 	{
-		 
+	 $user = $this->user->find($id);
+
+        if (is_null($user))
+        {
+            return Redirect::route('users.index');
+        }
+
+        return View::make('users.edit', compact('user'));	
 	}
 
 	/**
@@ -99,9 +105,37 @@ catch (Cartalyst\Sentry\Users\UserExistsException $e)
 	 */
 	public function update($id)
 	{
+		try
+{
+    // Find the user using the user id
+    $user = Sentry::getUserProvider()->findById($id);
+
+    // Update the user details
+    $user->email = Input::get('email');
+    $user->first_name =Input::get('first_name');
+    $user->last_name = Input::get('last_name');
+
+    // Update the user
+    if ($user->save())
+    {
+        // User information was updated
+    }
+    else
+    {
+        // User information was not updated
+    }
+}
+catch (Cartalyst\Sentry\Users\UserExistsException $e)
+{
+    echo 'User with this login already exists.';
+}
+catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+{
+    echo 'User was not found.';
 		
 	}
 
+}
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -110,7 +144,24 @@ catch (Cartalyst\Sentry\Users\UserExistsException $e)
 	 */
 	public function destroy($id)
 	{
-		
-	}
+		try
+{
+    // Find the user using the user id
+    $user = Sentry::getUserProvider()->findById($id);
 
+    // Delete the user
+    $user->delete();
+}
+catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+{
+    echo 'User was not found.';
+}
+
+	}
+	
+public function getLogin()
+	{
+		// Show the register form
+		return View::make('users.login');
+	}
 }
