@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Laravel PHP Framework
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
@@ -9,6 +10,13 @@ Laravel is accessible, yet powerful, providing powerful tools needed for large, 
 ## Official Documentation
 
 Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+=======
+## Laravel 4.x
+## Laravel Dev-branch
+### A Framework For Web Artisans
+
+[Official Documentation](http://four.laravel.com) (Under Active Development)
+>>>>>>> 4a317c81d5cc2dd794650ce7cac4ad5e231bd6fe
 
 ### Contributing To Laravel
 
@@ -16,4 +24,8 @@ Documentation for the entire framework can be found on the [Laravel website](htt
 
 ### License
 
+<<<<<<< HEAD
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+=======
+The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+>>>>>>> 4a317c81d5cc2dd794650ce7cac4ad5e231bd6fe

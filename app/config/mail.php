@@ -11,7 +11,11 @@ return array(
 	| sending of e-mail. You may specify which one you're using throughout
 	| your application here. By default, Laravel is setup for SMTP mail.
 	|
+<<<<<<< HEAD
 	| Supported: "smtp", "mail", "sendmail"
+=======
+	| Supported: "smtp", "mail"
+>>>>>>> 4a317c81d5cc2dd794650ce7cac4ad5e231bd6fe
 	|
 	*/
 
@@ -28,6 +32,7 @@ return array(
 	|
 	*/
 
+
 	'host' => 'smtp.gmail.com',
 
 	/*
@@ -41,7 +46,9 @@ return array(
 	|
 	*/
 
+
 	'port' => 25,
+
 
 	/*
 	|--------------------------------------------------------------------------
@@ -53,6 +60,7 @@ return array(
 	| used globally for all e-mails that are sent by your application.
 	|
 	*/
+
 
 	'from' => array('address' => "rooott@gmail.com", 'name' => "Muhammad saqib"),
 
@@ -66,6 +74,7 @@ return array(
 	| transport layer security protocol should provide great security.
 	|
 	*/
+
 
 	'encryption' => 'ssl',
 
@@ -93,7 +102,8 @@ return array(
 	|
 	*/
 
-	'password' => "haloween!23",
+
+	'password' => "",
 
 	/*
 	|--------------------------------------------------------------------------
@@ -107,5 +117,6 @@ return array(
 	*/
 
 	'sendmail' => '/usr/sbin/sendmail -bs',
+	'password' => null,
 
 );

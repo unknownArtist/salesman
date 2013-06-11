@@ -28,7 +28,7 @@
 					<td>{{ $item->item_company }}</td>
                     <td>{{ link_to_route('items.edit', 'Edit', array($item->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('items.destroy', $item->id))) }}
+{{ Form::open(array('method' => 'DELETE', 'route' => array('items.destroy', $item->id))) }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>

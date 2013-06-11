@@ -11,6 +11,7 @@
 |
 */
 
+
 // Route::get('/', function()
 // {
 // 	return View::make('hello');
@@ -20,10 +21,10 @@
 
 // Route::group(array('before' => 'auth'), function()
 // {
-	Route::resource('items', 'ItemsController');
+	// Route::resource('/', 'ItemsController');
 
 // });
-	Route::get('login', array('as' => 'login', 'uses' => 'AuthController@login'));
+	 Route::get('login', array('as' => 'login', 'uses' => 'AuthController@login'));
 	Route::post('log/in', array('as'=>'log.in' ,'uses' => 'AuthController@get_Login'));
 	Route::resource('register','AuthController');
 
@@ -36,3 +37,19 @@ Route::get('logout',function(){
 });
 
 Route::resource('categories', 'CategoriesController');
+
+ Route::get('/', function(){
+
+ 	echo "Hello workd";
+ });
+
+
+// Route::resource('register', 'RegisterController');
+
+Route::resource('items', 'ItemsController');
+/*--------------Admin routes-------------------*/
+Route::resource('admin','AdminConfigController@getIndex');
+// Route::resource('admin/categories','AdminConfigController@Categories');
+Route::resource('users', 'AdminConfigController@getusers');
+Route::resource('users', 'UsersController');
+

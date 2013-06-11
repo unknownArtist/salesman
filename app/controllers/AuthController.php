@@ -123,7 +123,7 @@ class AuthController extends BaseController {
                 'email'    => Input::get('email'),
                 'password' => Input::get('password'),
             );
-
+         
             // Try to authenticate the user
             $user = Sentry::authenticate($credentials, false);
             echo "hello world happy code";

@@ -51,6 +51,7 @@ class ItemsController extends BaseController {
     public function store()
     {
         $input = Input::all();
+       
         $validation = Validator::make($input, Item::$rules);
 
         if ($validation->passes())

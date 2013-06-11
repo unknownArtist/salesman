@@ -2,6 +2,12 @@
 	Options -MultiViews
 	RewriteEngine On
 
+<<<<<<< HEAD
+=======
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.+)/$ http://%{HTTP_HOST}/$1 [R=301,L]
+
+>>>>>>> 4a317c81d5cc2dd794650ce7cac4ad5e231bd6fe
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule ^ index.php [L]
 </IfModule>

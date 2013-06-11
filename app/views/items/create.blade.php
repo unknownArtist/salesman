@@ -34,6 +34,8 @@
             {{ Form::label('item_company', 'Item_company:') }}
             {{ Form::text('item_company') }}
         </li>
+        
+
 
         <li>
             {{ Form::submit('Submit', array('class' => 'btn btn-success')) }}
